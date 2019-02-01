@@ -11,11 +11,34 @@ var app = new koa();
 var bodyparser = new koa_bodyparser();
 //定义staticFiles
 var staticFiles = require('./static-files');
+//定义template
+var template = require('./template');
 
-//app载入bodyparse
+//服务器输出每一个请求，和请求时间
+app.use(async(ctx,next)=>{
+    console.log(`${ctx.request.method}, ${ctx.request.path}.`);
+    await next();
+});
+
+//服务器输出每一个请求的执行时长
+app.use(async(ctx,next)=>{
+    var start = new Date().getTime();
+    await next();
+    var time = new Date().getTime()-start;
+    console.log(`Time: ${time}ms.`);
+});
+//app载入bodyparser
 app.use(bodyparser);
 //app载入static-files
 app.use(staticFiles('/static/',__dirname+'/static'));
+//app载入templating
+var isdevelopment = process.env.NODE_ENV=="development";
+app.use(template('views',{
+    autoescape:true,
+    nocache:isdevelopment,
+    watch:isdevelopment,
+    throwOnUndefined:false
+},{}));
 //app载入controller
 app.use(controller("controllers"));
 

@@ -1,11 +1,7 @@
 'use strict'
 
-var index = async(ctx,next)=>{
-    console.log(ctx.response);
-};
-
-var main = async(ctx,next)=>{
-    ctx.response.body="<h1>hello world.</h1>";
+var login = async(ctx,next)=>{
+    ctx.render("login.html");
 };
 
 var signIn = async(ctx,next)=>{
@@ -28,7 +24,5 @@ var signIn = async(ctx,next)=>{
 };
 
 module.exports={
-    //"GET /index2": index,
-    "GET /login/index": main,
-    //"POST /login/signIn": signIn
+    "GET /login": login,
 };
