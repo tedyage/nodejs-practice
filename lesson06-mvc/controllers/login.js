@@ -1,7 +1,7 @@
 'use strict'
 
 var login = async(ctx,next)=>{
-    ctx.render("login.html");
+    ctx.render("login.html",{title:'Welcome'});
 };
 
 var signIn = async(ctx,next)=>{
@@ -13,7 +13,7 @@ var signIn = async(ctx,next)=>{
         //登录成功
         ctx.render('signin-ok.html',{
             title: 'Sign In OK',
-            name: 'Mr Node'
+            email: email
         });
     }else{
         //登录失败
@@ -25,4 +25,5 @@ var signIn = async(ctx,next)=>{
 
 module.exports={
     "GET /login": login,
+    "POST /SignIn":signIn
 };
