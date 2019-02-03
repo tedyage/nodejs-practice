@@ -43,3 +43,4 @@ app.use(template('views',{
 app.use(controller("controllers"));
 
 app.listen(3000);
+console.log("The server is listening ...");
