@@ -23,7 +23,16 @@ var AddMapping = function(pathname, filename){
             //POST请求
             urlPath = url.substring(5);
             router.post(urlPath,mapping[url]);
-        }else{
+        }else if(url.toLowerCase().startsWith('put ')){
+            //PUT请求
+            urlPath = url.substring(4);
+            router.put(urlPath,mapping[url]);
+        }else if(url.toLowerCase().startsWith('delete ')){
+            //DELETE请求
+            urlPath = url.substring(7);
+            router.delete(urlPath,mapping[url]);
+        }
+        else{
             console.log(`invalid URL: ${url}`);
         }
     }
