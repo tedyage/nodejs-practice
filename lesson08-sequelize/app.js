@@ -75,9 +75,9 @@ var destoryPet = async(name)=>{
     }
 };
 
-//addPet();
-//getPet("Odie");
-//updatePet('Odie');
-//getPet("Odie");
-//destoryPet('Odie');
-//getPet("Odie");
+addPet();
+getPet("Odie");
+updatePet('Odie');
+getPet("Odie");
+destoryPet('Odie');
+getPet("Odie");
