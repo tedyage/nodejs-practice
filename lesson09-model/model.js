@@ -12,8 +12,7 @@ module.exports={};
 //遍历js文件
 for(var file of files){
     //去文件名为输出对象的属性名
-    var name = file.substring(0,file.substring(0,file.length-3));
-    console.log(__dirname+"/models/"+file);
+    var name = file.substring(0,file.length-3)
     //引用该文件，并输出该文件的输出
     module.exports[name] = require(__dirname+"/models/"+file);
 }

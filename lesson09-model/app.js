@@ -13,9 +13,7 @@ var bodyparser = new koa_bodyparser();
 var staticFiles = require('./static-files');
 //定义template
 var template = require('./template');
-//定义model
-var model = require("./model");
-model.sync();
+
 //服务器输出每一个请求，和请求时间
 app.use(async(ctx,next)=>{
     console.log(`${ctx.request.method}, ${ctx.request.path}.`);
@@ -44,6 +42,20 @@ app.use(template('views',{
 //app载入controller
 app.use(controller("controllers"));
 
-
 app.listen(3000);
 console.log("The server is listening ...");
+
+/*//定义model
+var model = require("./model");
+var User = model.User;
+//创建一条user数据
+var createUser = async(username,password,email,gender)=>{
+    var user = await User.create({
+        username:username,
+        password:password,
+        email:email,
+        gender:gender
+    });
+    console.log(`Create a User ${JSON.stringify(user)}.`);
+};
+createUser("tedyage","123456","tedyage@sina.com",true);*/

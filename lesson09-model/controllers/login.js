@@ -1,4 +1,5 @@
 'use strict'
+var user_repository = require("../repositories/user_repository");
 
 var login = async(ctx,next)=>{
     ctx.render("login.html",{title:'Welcome'});
@@ -8,8 +9,9 @@ var signIn = async(ctx,next)=>{
     //获取传入的邮箱地址和密码
     var email = ctx.request.body.email||'',
         password = ctx.request.body.password||'';
-    //判断邮箱和密码是否正确
-    if(email==='tedyage@sina.com'&&password==='123456'){
+    //根据邮箱和密码查询用户信息
+    var user = await user_repository.getUserByEmailAndPassword(email,password);
+    if(user!==null&&user.id){
         //登录成功
         ctx.render('signin-ok.html',{
             title: 'Sign In OK',

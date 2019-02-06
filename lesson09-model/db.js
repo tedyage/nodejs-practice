@@ -77,7 +77,7 @@ var defineModel = function(name,attributes){
                     }
                     obj.createdAt = now;
                     obj.updatedAt = now;
-                    obj.verson = 0;
+                    obj.version = 0;
                 }else{
                     obj.updatedAt = now;
                     obj.version++;
