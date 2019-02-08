@@ -19,7 +19,7 @@ app.use(async(ctx,next)=>{
     console.log(`This request processed in ${processTime}ms.`);
 })
 
-app.use(koa_bodyparser);
+app.use(koa_bodyparser());
 
 app.use(controller("controllers"));
 
