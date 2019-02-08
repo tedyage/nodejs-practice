@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>lesson 11 rest</title>
+        <meta charset="utf-8"/>
+        <meta name = "viewport" content="width=device-width initial-scale=1 minimum-scale=1 maximum-scale=1 user-scalable=no"/>
+        <link rel="stylesheet" href="/static/css/bootstrap.css"/>
+        <script type="text/javascript" src="/static/js/jquery.js"></script>
+        <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+        <script type="text/javascript" src="/static/js/vue.js"></script>
+    </head>
+    <body>
+        <header class="navbar narbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/" class="navbar-brand">Learn JavaScript</a>
+                </div>
+                <nav class="collapse navbar-collapse" id="bs-navbar">
+                    <ul class="nav navbar-nav">
+                        <li><a target="_blank" href="javascript:void(0);">Get Course</a></li>
+                        <li><a target="_blank" href="javascript:void(0);">Source Code</a></li>
+                        <li><a target="_blank" href="javascript:void(0);">Resource</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/signout">Sign Out</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div id = "important" style="color:#cdbfe3;background-color:#6f5499;padding:30px 0;margin:-20px 0 20px 0;">
+            <div class="container">
+                <h1 style="color:#fff;font-size:60px">Getting started width REST API!</h1>
+                <p style="font-size:24px;line-height:48px">Learn JavaScript, Node.js, REST, WebSocket, npm, koa2, nunjucks, babel, etc.</p>
+            </div>
+        </div>
+        {%block main%}{%endblock%}
+        <footer style="background-color:#ddd;padding:20px 0">
+            <div class="container">
+                <p>
+                    <a target="_blank" href="javascript:void(0);">Website</a> - 
+                    <a target="_blank" href="javascript:void(0);">GitHub</a> - 
+                    <a target="_blank" href="javascript:void(0);">Weibo</a>
+                </p>
+                <p>This Javascript course is created by <a target="_blank" href="javascript:void(0);">@廖雪峰</a>.</p>
+                <p>Code licensed <a target="_blank" href="javascript:void(0);">Apache</a>.</p>
+            </div>
+        </footer>
+    </body>
+</html>
