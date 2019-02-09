@@ -12,7 +12,7 @@ var createTemplate = function(dir,options){
     //是否在遇到undefined情况下，抛出异常
     var throwOnUndefined = options.throwOnUndefined||true;
     //初始化模版环境对象
-    var template = new nunjucks.Environment(new FileSystemLoader(dir,{
+    var template = new nunjucks.Environment(new nunjucks.FileSystemLoader(dir,{
         noCache:noCache,
         watch:watch,
     }),{
@@ -36,17 +36,10 @@ module.exports = function(dir,options){
     var fp = path.join(__dirname,dir);
     var template = createTemplate(fp,options);
     return async(ctx,next)=>{
-        //获取请求路径
-        var rpath = ctx.request.path;
-        //判断请求路径是否已
-        if(rpath.startsWith(fp)){            
-            if(template){
-                ctx.render = function(view,model){
-                    ctx.response.type = "text/html";
-                    ctx.response.body = template.render(view,Object.assign({},ctx.state||{},model||{}));
-                }
-            }
-        }  
+        ctx.render = function(view,model){
+            ctx.response.type = "text/html";
+            ctx.response.body = template.render(view,Object.assign({},ctx.state||{},model||{}));
+        }
         await next();     
     }
 }

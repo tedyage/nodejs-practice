@@ -31,7 +31,9 @@ var addMapping = function(router,mapping){
 var addController = function(router,dir){    
     var fp = path.join(__dirname,dir);
     //根据路径名读取改路径下所有js文件
-    var files = fs.readdirSync(fp).filter((f)=>f.endsWith(".js"));
+    var files = fs.readdirSync(fp).filter((f)=>{
+        return f.endsWith('.js');
+    });
     //遍历js文件名数组
     for(var file of files){
         file = path.join(fp,file);

@@ -14,7 +14,6 @@ module.exports = function(url,dir){
             //获取文件名
             var file = rpath.substring(url.length);
             file = path.join(__dirname,dir,file);
-            console.log(`static file is ${file}`);
             //判断该文件是否存在
             var stat = await fs.stat(file);
             if(stat.isFile()){
@@ -22,5 +21,6 @@ module.exports = function(url,dir){
                 ctx.response.body = await fs.readFile(file);
             } 
         } 
+        await next();
     }
 }

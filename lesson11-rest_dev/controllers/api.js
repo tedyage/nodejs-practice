@@ -18,7 +18,7 @@ module.exports = {
     },
     'DELETE /api/products/:id':async(ctx,next)=>{
         var id = ctx.params.id;
-        if(id > 0){
+        if(id){
             var product = products.deleteProduct(id);
             if(product){
                 ctx.rest(product);

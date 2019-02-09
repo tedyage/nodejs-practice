@@ -1,9 +1,10 @@
 'use strict'
-var koa = require("koa");
-var koa_bodyparser = require("koa-bodyparser");
-var static_files  = require("./static-files");
-var templating = require("./templating");
-var controller = require("./controller");
+const koa = require("koa");
+const koa_bodyparser = require("koa-bodyparser");
+const static_files  = require("./static-files");
+const templating = require("./templating");
+const rest = require("./rest");
+const controller = require("./controller");
 //初始化koa对象app
 var app = new koa();
 
@@ -31,6 +32,8 @@ app.use(templating('views',{
     watch:!isdevelopment,
     throwOnUndefined:false,
 }));
+
+app.use(rest.restify());
 
 app.use(controller());
 
